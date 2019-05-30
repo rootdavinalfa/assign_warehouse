@@ -1,4 +1,7 @@
-﻿Imports MySql.Data.MySqlClient
+﻿'Copyright 2019
+'    Davin Alfarizky Putra Basudewa <davinbambang@hotmail.com / dbasudewa@gmail.com>
+'    All rights reserved
+Imports MySql.Data.MySqlClient
 Public Class login_form
     Public iduser As String
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles login_btn.Click

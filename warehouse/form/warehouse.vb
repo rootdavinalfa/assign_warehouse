@@ -1,4 +1,7 @@
-﻿Imports MySql.Data.MySqlClient
+﻿'Copyright 2019
+'    Davin Alfarizky Putra Basudewa <davinbambang@hotmail.com / dbasudewa@gmail.com>
+'    All rights reserved
+Imports MySql.Data.MySqlClient
 Public Class warehouse
     Private Sub warehouse_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If MessageBox.Show("Are you sure to close this form?", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
