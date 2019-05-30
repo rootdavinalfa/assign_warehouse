@@ -1,5 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class login_form
+    Public iduser As String
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles login_btn.Click
         Call Login()
     End Sub
@@ -33,6 +34,11 @@ Public Class login_form
             adapter.Fill(rowtables)
             If rowtables.Rows.Count > 0 Then
                 MsgBox("Login Success")
+                iduser = rowtables.Rows(0).Item(0)
+                Dim wh = New warehouse
+                wh.Show()
+                Me.Hide()
+
             Else
                 MsgBox("Username/password salah")
                 username_text.Text = ""
