@@ -32,15 +32,22 @@ Public Class login_form
         ElseIf password = "" Then
             MsgBox("Isi Password")
         Else
-            sql = "SELECT * FROM user_list WHERE username='" & username & "' && password ='" & password & "';"
+            sql = "SELECT t1.id_user,t2.type FROM user_list t1 INNER JOIN user_detail t2 ON t1.id_user = t2.id_user 
+                   WHERE t1.username='" & username & "' && t1.password ='" & password & "';"
             adapter = New MySqlDataAdapter(sql, Con)
             adapter.Fill(rowtables)
             If rowtables.Rows.Count > 0 Then
-                MsgBox("Login Success")
                 iduser = rowtables.Rows(0).Item(0)
-                Dim wh = New warehouse
-                wh.Show()
-                Me.Hide()
+                Dim type_user As String = rowtables.Rows(0).Item(1)
+                If type_user = "ADMIN" Or type_user = "PIC" Then
+                    MsgBox("Login Success")
+                    Dim wh = New warehouse
+                    wh.Show()
+                    Me.Hide()
+                Else
+                    MsgBox("Not Authorized!")
+                End If
+
 
             Else
                 MsgBox("Username/password salah")
