@@ -46,6 +46,8 @@ Public Class login_form
                     Me.Hide()
                 Else
                     MsgBox("Not Authorized!")
+                    username_text.Text = ""
+                    password_text.Text = ""
                 End If
 
 

@@ -9,14 +9,14 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Warehouse Project")>
+<Assembly: AssemblyTitle("#DONTSTEALMYWORKS")>
 <Assembly: AssemblyDescription("Application for warehousing")>
 <Assembly: AssemblyCompany("Kelompok 7")>
-<Assembly: AssemblyProduct("Essential")>
+<Assembly: AssemblyProduct("Davin Alfarizky Putra Basudewa")>
 <Assembly: AssemblyCopyright("Copyright ©  2019")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyTrademark("Davin Alfarizky Putra Basudewa,GPL")>
 
-<Assembly: ComVisible(False)>
+<Assembly: ComVisible(True)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
 <Assembly: Guid("89cc5fc3-f5cd-415f-84f2-a8f1ed2cf546")>

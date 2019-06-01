@@ -23,6 +23,14 @@ Partial Class warehouse
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(warehouse))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.wh_iduser_lbl = New System.Windows.Forms.Label()
@@ -35,40 +43,60 @@ Partial Class warehouse
         Me.wh_summary_show = New System.Windows.Forms.Button()
         Me.wh_summary_product = New System.Windows.Forms.RadioButton()
         Me.wh_summary_suppl = New System.Windows.Forms.RadioButton()
+        Me.stock_tab = New System.Windows.Forms.TabPage()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.wh_stock_btnshow = New System.Windows.Forms.Button()
+        Me.wh_stock_tb_name = New System.Windows.Forms.TextBox()
+        Me.wh_stock_checkl = New System.Windows.Forms.CheckBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.wh_stock_gd = New System.Windows.Forms.DataGridView()
         Me.receive_tab = New System.Windows.Forms.TabPage()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.wh_recv_dgv = New System.Windows.Forms.DataGridView()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.wh_suppl_update = New System.Windows.Forms.Button()
+        Me.wh_suppl_delete = New System.Windows.Forms.Button()
+        Me.wh_suppl_modify = New System.Windows.Forms.CheckBox()
+        Me.wh_recv_refresh = New System.Windows.Forms.Button()
+        Me.wh_recv_upload = New System.Windows.Forms.Button()
+        Me.hw_textb_items = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.wh_combo_supplier = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.hw_recv_id = New System.Windows.Forms.TextBox()
         Me.production_tab = New System.Windows.Forms.TabPage()
-        Me.DataGridView3 = New System.Windows.Forms.DataGridView()
+        Me.wh_product_dgv = New System.Windows.Forms.DataGridView()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.wh_product_refresh = New System.Windows.Forms.Button()
+        Me.wh_product_pic = New System.Windows.Forms.TextBox()
+        Me.wh_product_upload = New System.Windows.Forms.Button()
+        Me.wh_product_items = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.wh_product_pack = New System.Windows.Forms.TextBox()
         Me.lbl_date = New System.Windows.Forms.Label()
         Me.now_date = New System.Windows.Forms.Timer(Me.components)
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.wh_product_update = New System.Windows.Forms.Button()
+        Me.wh_product_delete = New System.Windows.Forms.Button()
+        Me.wh_product_checkl = New System.Windows.Forms.CheckBox()
         Me.wh_tablay.SuspendLayout()
         Me.summary_tab.SuspendLayout()
         CType(Me.wh_summary_dg, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        Me.stock_tab.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
+        CType(Me.wh_stock_gd, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.receive_tab.SuspendLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.wh_recv_dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        Me.GroupBox6.SuspendLayout()
         Me.production_tab.SuspendLayout()
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.wh_product_dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -119,6 +147,7 @@ Partial Class warehouse
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.wh_tablay.Controls.Add(Me.summary_tab)
+        Me.wh_tablay.Controls.Add(Me.stock_tab)
         Me.wh_tablay.Controls.Add(Me.receive_tab)
         Me.wh_tablay.Controls.Add(Me.production_tab)
         Me.wh_tablay.Location = New System.Drawing.Point(1, 66)
@@ -145,7 +174,25 @@ Partial Class warehouse
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.wh_summary_dg.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.wh_summary_dg.BackgroundColor = System.Drawing.SystemColors.ActiveBorder
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.wh_summary_dg.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.wh_summary_dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.wh_summary_dg.DefaultCellStyle = DataGridViewCellStyle2
+        Me.wh_summary_dg.GridColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.wh_summary_dg.Location = New System.Drawing.Point(4, 90)
         Me.wh_summary_dg.Name = "wh_summary_dg"
         Me.wh_summary_dg.Size = New System.Drawing.Size(941, 300)
@@ -199,10 +246,100 @@ Partial Class warehouse
         Me.wh_summary_suppl.Text = "From Supplier(Receive)"
         Me.wh_summary_suppl.UseVisualStyleBackColor = True
         '
+        'stock_tab
+        '
+        Me.stock_tab.Controls.Add(Me.GroupBox5)
+        Me.stock_tab.Controls.Add(Me.wh_stock_gd)
+        Me.stock_tab.Location = New System.Drawing.Point(4, 22)
+        Me.stock_tab.Name = "stock_tab"
+        Me.stock_tab.Padding = New System.Windows.Forms.Padding(3)
+        Me.stock_tab.Size = New System.Drawing.Size(948, 395)
+        Me.stock_tab.TabIndex = 3
+        Me.stock_tab.Text = "Stok/Package List"
+        Me.stock_tab.UseVisualStyleBackColor = True
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox5.Controls.Add(Me.wh_stock_btnshow)
+        Me.GroupBox5.Controls.Add(Me.wh_stock_tb_name)
+        Me.GroupBox5.Controls.Add(Me.wh_stock_checkl)
+        Me.GroupBox5.Controls.Add(Me.Label10)
+        Me.GroupBox5.Location = New System.Drawing.Point(3, 6)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(942, 74)
+        Me.GroupBox5.TabIndex = 1
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Stok/Package Find"
+        '
+        'wh_stock_btnshow
+        '
+        Me.wh_stock_btnshow.Location = New System.Drawing.Point(486, 31)
+        Me.wh_stock_btnshow.Name = "wh_stock_btnshow"
+        Me.wh_stock_btnshow.Size = New System.Drawing.Size(75, 23)
+        Me.wh_stock_btnshow.TabIndex = 3
+        Me.wh_stock_btnshow.Text = "Show"
+        Me.wh_stock_btnshow.UseVisualStyleBackColor = True
+        '
+        'wh_stock_tb_name
+        '
+        Me.wh_stock_tb_name.Location = New System.Drawing.Point(179, 33)
+        Me.wh_stock_tb_name.Name = "wh_stock_tb_name"
+        Me.wh_stock_tb_name.Size = New System.Drawing.Size(301, 20)
+        Me.wh_stock_tb_name.TabIndex = 2
+        '
+        'wh_stock_checkl
+        '
+        Me.wh_stock_checkl.AutoSize = True
+        Me.wh_stock_checkl.Location = New System.Drawing.Point(10, 33)
+        Me.wh_stock_checkl.Name = "wh_stock_checkl"
+        Me.wh_stock_checkl.Size = New System.Drawing.Size(52, 17)
+        Me.wh_stock_checkl.TabIndex = 1
+        Me.wh_stock_checkl.Text = "Find?"
+        Me.wh_stock_checkl.UseVisualStyleBackColor = True
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(68, 34)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(108, 13)
+        Me.Label10.TabIndex = 0
+        Me.Label10.Text = "Stok/Package Name"
+        '
+        'wh_stock_gd
+        '
+        Me.wh_stock_gd.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.wh_stock_gd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.wh_stock_gd.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.wh_stock_gd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.wh_stock_gd.DefaultCellStyle = DataGridViewCellStyle4
+        Me.wh_stock_gd.Location = New System.Drawing.Point(0, 86)
+        Me.wh_stock_gd.Name = "wh_stock_gd"
+        Me.wh_stock_gd.Size = New System.Drawing.Size(948, 309)
+        Me.wh_stock_gd.TabIndex = 0
+        '
         'receive_tab
         '
         Me.receive_tab.BackColor = System.Drawing.Color.Transparent
-        Me.receive_tab.Controls.Add(Me.DataGridView2)
+        Me.receive_tab.Controls.Add(Me.wh_recv_dgv)
         Me.receive_tab.Controls.Add(Me.GroupBox2)
         Me.receive_tab.Cursor = System.Windows.Forms.Cursors.Default
         Me.receive_tab.Location = New System.Drawing.Point(4, 22)
@@ -210,69 +347,132 @@ Partial Class warehouse
         Me.receive_tab.Padding = New System.Windows.Forms.Padding(3)
         Me.receive_tab.Size = New System.Drawing.Size(948, 395)
         Me.receive_tab.TabIndex = 0
-        Me.receive_tab.Text = "Receive From Suppl"
+        Me.receive_tab.Text = "Receive From Supplier"
         '
-        'DataGridView2
+        'wh_recv_dgv
         '
-        Me.DataGridView2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.wh_recv_dgv.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(4, 89)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(941, 300)
-        Me.DataGridView2.TabIndex = 1
+        Me.wh_recv_dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.wh_recv_dgv.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        Me.wh_recv_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.wh_recv_dgv.DefaultCellStyle = DataGridViewCellStyle6
+        Me.wh_recv_dgv.Location = New System.Drawing.Point(4, 89)
+        Me.wh_recv_dgv.Name = "wh_recv_dgv"
+        Me.wh_recv_dgv.Size = New System.Drawing.Size(941, 300)
+        Me.wh_recv_dgv.TabIndex = 1
         '
         'GroupBox2
         '
         Me.GroupBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox2.Controls.Add(Me.Button1)
-        Me.GroupBox2.Controls.Add(Me.Button2)
-        Me.GroupBox2.Controls.Add(Me.TextBox2)
+        Me.GroupBox2.Controls.Add(Me.GroupBox6)
+        Me.GroupBox2.Controls.Add(Me.wh_recv_refresh)
+        Me.GroupBox2.Controls.Add(Me.wh_recv_upload)
+        Me.GroupBox2.Controls.Add(Me.hw_textb_items)
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.wh_combo_supplier)
         Me.GroupBox2.Controls.Add(Me.Label2)
-        Me.GroupBox2.Controls.Add(Me.TextBox1)
+        Me.GroupBox2.Controls.Add(Me.hw_recv_id)
         Me.GroupBox2.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(942, 79)
+        Me.GroupBox2.Size = New System.Drawing.Size(942, 87)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Add Goods"
         '
-        'Button1
+        'GroupBox6
         '
-        Me.Button1.Location = New System.Drawing.Point(779, 24)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 40)
-        Me.Button1.TabIndex = 10
-        Me.Button1.Text = "Refresh"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.GroupBox6.Controls.Add(Me.wh_suppl_update)
+        Me.GroupBox6.Controls.Add(Me.wh_suppl_delete)
+        Me.GroupBox6.Controls.Add(Me.wh_suppl_modify)
+        Me.GroupBox6.Location = New System.Drawing.Point(526, 11)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(247, 69)
+        Me.GroupBox6.TabIndex = 11
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "Delete / Update"
         '
-        'Button2
+        'wh_suppl_update
         '
-        Me.Button2.Location = New System.Drawing.Point(861, 24)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 40)
-        Me.Button2.TabIndex = 9
-        Me.Button2.Text = "Upload"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.wh_suppl_update.BackColor = System.Drawing.Color.SeaGreen
+        Me.wh_suppl_update.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.wh_suppl_update.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.wh_suppl_update.Location = New System.Drawing.Point(114, 37)
+        Me.wh_suppl_update.Name = "wh_suppl_update"
+        Me.wh_suppl_update.Size = New System.Drawing.Size(104, 23)
+        Me.wh_suppl_update.TabIndex = 2
+        Me.wh_suppl_update.Text = "Update"
+        Me.wh_suppl_update.UseVisualStyleBackColor = False
         '
-        'TextBox2
+        'wh_suppl_delete
         '
-        Me.TextBox2.Location = New System.Drawing.Point(488, 24)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(142, 20)
-        Me.TextBox2.TabIndex = 8
+        Me.wh_suppl_delete.BackColor = System.Drawing.Color.Brown
+        Me.wh_suppl_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.wh_suppl_delete.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.wh_suppl_delete.Location = New System.Drawing.Point(114, 13)
+        Me.wh_suppl_delete.Name = "wh_suppl_delete"
+        Me.wh_suppl_delete.Size = New System.Drawing.Size(104, 23)
+        Me.wh_suppl_delete.TabIndex = 1
+        Me.wh_suppl_delete.Text = "Delete Selected"
+        Me.wh_suppl_delete.UseVisualStyleBackColor = False
+        '
+        'wh_suppl_modify
+        '
+        Me.wh_suppl_modify.AutoSize = True
+        Me.wh_suppl_modify.Location = New System.Drawing.Point(6, 26)
+        Me.wh_suppl_modify.Name = "wh_suppl_modify"
+        Me.wh_suppl_modify.Size = New System.Drawing.Size(93, 17)
+        Me.wh_suppl_modify.TabIndex = 0
+        Me.wh_suppl_modify.Text = "Modify Table?"
+        Me.wh_suppl_modify.UseVisualStyleBackColor = True
+        '
+        'wh_recv_refresh
+        '
+        Me.wh_recv_refresh.Location = New System.Drawing.Point(779, 24)
+        Me.wh_recv_refresh.Name = "wh_recv_refresh"
+        Me.wh_recv_refresh.Size = New System.Drawing.Size(75, 40)
+        Me.wh_recv_refresh.TabIndex = 10
+        Me.wh_recv_refresh.Text = "Refresh"
+        Me.wh_recv_refresh.UseVisualStyleBackColor = True
+        '
+        'wh_recv_upload
+        '
+        Me.wh_recv_upload.Location = New System.Drawing.Point(861, 24)
+        Me.wh_recv_upload.Name = "wh_recv_upload"
+        Me.wh_recv_upload.Size = New System.Drawing.Size(75, 40)
+        Me.wh_recv_upload.TabIndex = 9
+        Me.wh_recv_upload.Text = "Upload"
+        Me.wh_recv_upload.UseVisualStyleBackColor = True
+        '
+        'hw_textb_items
+        '
+        Me.hw_textb_items.Location = New System.Drawing.Point(378, 37)
+        Me.hw_textb_items.Name = "hw_textb_items"
+        Me.hw_textb_items.Size = New System.Drawing.Size(142, 20)
+        Me.hw_textb_items.TabIndex = 8
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(400, 24)
+        Me.Label5.Location = New System.Drawing.Point(375, 21)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(81, 13)
         Me.Label5.TabIndex = 7
@@ -304,17 +504,17 @@ Partial Class warehouse
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "ID Package"
         '
-        'TextBox1
+        'hw_recv_id
         '
-        Me.TextBox1.Location = New System.Drawing.Point(84, 21)
-        Me.TextBox1.MaxLength = 30
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(285, 20)
-        Me.TextBox1.TabIndex = 0
+        Me.hw_recv_id.Location = New System.Drawing.Point(84, 21)
+        Me.hw_recv_id.MaxLength = 30
+        Me.hw_recv_id.Name = "hw_recv_id"
+        Me.hw_recv_id.Size = New System.Drawing.Size(285, 20)
+        Me.hw_recv_id.TabIndex = 0
         '
         'production_tab
         '
-        Me.production_tab.Controls.Add(Me.DataGridView3)
+        Me.production_tab.Controls.Add(Me.wh_product_dgv)
         Me.production_tab.Controls.Add(Me.GroupBox3)
         Me.production_tab.Location = New System.Drawing.Point(4, 22)
         Me.production_tab.Name = "production_tab"
@@ -324,31 +524,48 @@ Partial Class warehouse
         Me.production_tab.Text = "To Production Line"
         Me.production_tab.UseVisualStyleBackColor = True
         '
-        'DataGridView3
+        'wh_product_dgv
         '
-        Me.DataGridView3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.wh_product_dgv.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView3.Location = New System.Drawing.Point(3, 88)
-        Me.DataGridView3.Name = "DataGridView3"
-        Me.DataGridView3.Size = New System.Drawing.Size(949, 307)
-        Me.DataGridView3.TabIndex = 2
+        Me.wh_product_dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.wh_product_dgv.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        Me.wh_product_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.wh_product_dgv.DefaultCellStyle = DataGridViewCellStyle8
+        Me.wh_product_dgv.Location = New System.Drawing.Point(3, 88)
+        Me.wh_product_dgv.Name = "wh_product_dgv"
+        Me.wh_product_dgv.Size = New System.Drawing.Size(949, 307)
+        Me.wh_product_dgv.TabIndex = 2
         '
         'GroupBox3
         '
         Me.GroupBox3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox3.Controls.Add(Me.Button4)
-        Me.GroupBox3.Controls.Add(Me.TextBox5)
-        Me.GroupBox3.Controls.Add(Me.Button3)
-        Me.GroupBox3.Controls.Add(Me.TextBox3)
+        Me.GroupBox3.Controls.Add(Me.GroupBox4)
+        Me.GroupBox3.Controls.Add(Me.wh_product_refresh)
+        Me.GroupBox3.Controls.Add(Me.wh_product_pic)
+        Me.GroupBox3.Controls.Add(Me.wh_product_upload)
+        Me.GroupBox3.Controls.Add(Me.wh_product_items)
         Me.GroupBox3.Controls.Add(Me.Label6)
         Me.GroupBox3.Controls.Add(Me.Label7)
         Me.GroupBox3.Controls.Add(Me.Label8)
-        Me.GroupBox3.Controls.Add(Me.TextBox4)
+        Me.GroupBox3.Controls.Add(Me.wh_product_pack)
         Me.GroupBox3.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(942, 79)
@@ -356,43 +573,43 @@ Partial Class warehouse
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Add Goods"
         '
-        'Button4
+        'wh_product_refresh
         '
-        Me.Button4.Location = New System.Drawing.Point(768, 24)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 40)
-        Me.Button4.TabIndex = 11
-        Me.Button4.Text = "Refresh"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.wh_product_refresh.Location = New System.Drawing.Point(768, 24)
+        Me.wh_product_refresh.Name = "wh_product_refresh"
+        Me.wh_product_refresh.Size = New System.Drawing.Size(75, 40)
+        Me.wh_product_refresh.TabIndex = 11
+        Me.wh_product_refresh.Text = "Refresh"
+        Me.wh_product_refresh.UseVisualStyleBackColor = True
         '
-        'TextBox5
+        'wh_product_pic
         '
-        Me.TextBox5.Location = New System.Drawing.Point(84, 53)
-        Me.TextBox5.MaxLength = 30
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(285, 20)
-        Me.TextBox5.TabIndex = 10
+        Me.wh_product_pic.Location = New System.Drawing.Point(84, 53)
+        Me.wh_product_pic.MaxLength = 30
+        Me.wh_product_pic.Name = "wh_product_pic"
+        Me.wh_product_pic.Size = New System.Drawing.Size(285, 20)
+        Me.wh_product_pic.TabIndex = 10
         '
-        'Button3
+        'wh_product_upload
         '
-        Me.Button3.Location = New System.Drawing.Point(849, 24)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 40)
-        Me.Button3.TabIndex = 9
-        Me.Button3.Text = "Upload"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.wh_product_upload.Location = New System.Drawing.Point(849, 24)
+        Me.wh_product_upload.Name = "wh_product_upload"
+        Me.wh_product_upload.Size = New System.Drawing.Size(75, 40)
+        Me.wh_product_upload.TabIndex = 9
+        Me.wh_product_upload.Text = "Upload"
+        Me.wh_product_upload.UseVisualStyleBackColor = True
         '
-        'TextBox3
+        'wh_product_items
         '
-        Me.TextBox3.Location = New System.Drawing.Point(488, 24)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(142, 20)
-        Me.TextBox3.TabIndex = 8
+        Me.wh_product_items.Location = New System.Drawing.Point(387, 44)
+        Me.wh_product_items.Name = "wh_product_items"
+        Me.wh_product_items.Size = New System.Drawing.Size(142, 20)
+        Me.wh_product_items.TabIndex = 8
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(400, 24)
+        Me.Label6.Location = New System.Drawing.Point(384, 28)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(40, 13)
         Me.Label6.TabIndex = 7
@@ -416,13 +633,13 @@ Partial Class warehouse
         Me.Label8.TabIndex = 1
         Me.Label8.Text = "ID Package"
         '
-        'TextBox4
+        'wh_product_pack
         '
-        Me.TextBox4.Location = New System.Drawing.Point(84, 21)
-        Me.TextBox4.MaxLength = 30
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(285, 20)
-        Me.TextBox4.TabIndex = 0
+        Me.wh_product_pack.Location = New System.Drawing.Point(84, 21)
+        Me.wh_product_pack.MaxLength = 30
+        Me.wh_product_pack.Name = "wh_product_pack"
+        Me.wh_product_pack.Size = New System.Drawing.Size(285, 20)
+        Me.wh_product_pack.TabIndex = 0
         '
         'lbl_date
         '
@@ -437,6 +654,52 @@ Partial Class warehouse
         '
         'now_date
         '
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.wh_product_update)
+        Me.GroupBox4.Controls.Add(Me.wh_product_delete)
+        Me.GroupBox4.Controls.Add(Me.wh_product_checkl)
+        Me.GroupBox4.Location = New System.Drawing.Point(535, 10)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(247, 69)
+        Me.GroupBox4.TabIndex = 12
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Delete / Update"
+        '
+        'wh_product_update
+        '
+        Me.wh_product_update.BackColor = System.Drawing.Color.SeaGreen
+        Me.wh_product_update.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.wh_product_update.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.wh_product_update.Location = New System.Drawing.Point(114, 37)
+        Me.wh_product_update.Name = "wh_product_update"
+        Me.wh_product_update.Size = New System.Drawing.Size(104, 23)
+        Me.wh_product_update.TabIndex = 2
+        Me.wh_product_update.Text = "Update"
+        Me.wh_product_update.UseVisualStyleBackColor = False
+        '
+        'wh_product_delete
+        '
+        Me.wh_product_delete.BackColor = System.Drawing.Color.Brown
+        Me.wh_product_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.wh_product_delete.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.wh_product_delete.Location = New System.Drawing.Point(114, 13)
+        Me.wh_product_delete.Name = "wh_product_delete"
+        Me.wh_product_delete.Size = New System.Drawing.Size(104, 23)
+        Me.wh_product_delete.TabIndex = 1
+        Me.wh_product_delete.Text = "Delete Selected"
+        Me.wh_product_delete.UseVisualStyleBackColor = False
+        '
+        'wh_product_checkl
+        '
+        Me.wh_product_checkl.AutoSize = True
+        Me.wh_product_checkl.Location = New System.Drawing.Point(6, 26)
+        Me.wh_product_checkl.Name = "wh_product_checkl"
+        Me.wh_product_checkl.Size = New System.Drawing.Size(93, 17)
+        Me.wh_product_checkl.TabIndex = 0
+        Me.wh_product_checkl.Text = "Modify Table?"
+        Me.wh_product_checkl.UseVisualStyleBackColor = True
         '
         'warehouse
         '
@@ -458,14 +721,22 @@ Partial Class warehouse
         CType(Me.wh_summary_dg, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.stock_tab.ResumeLayout(False)
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
+        CType(Me.wh_stock_gd, System.ComponentModel.ISupportInitialize).EndInit()
         Me.receive_tab.ResumeLayout(False)
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.wh_recv_dgv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
         Me.production_tab.ResumeLayout(False)
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.wh_product_dgv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -488,22 +759,37 @@ Partial Class warehouse
     Friend WithEvents now_date As Timer
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents DataGridView2 As DataGridView
+    Friend WithEvents hw_recv_id As TextBox
+    Friend WithEvents wh_recv_dgv As DataGridView
     Friend WithEvents Label3 As Label
     Friend WithEvents wh_combo_supplier As ComboBox
-    Friend WithEvents Button2 As Button
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents wh_recv_upload As Button
+    Friend WithEvents hw_textb_items As TextBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents DataGridView3 As DataGridView
+    Friend WithEvents wh_product_dgv As DataGridView
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents Button3 As Button
-    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents wh_product_pic As TextBox
+    Friend WithEvents wh_product_upload As Button
+    Friend WithEvents wh_product_items As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button4 As Button
+    Friend WithEvents wh_product_pack As TextBox
+    Friend WithEvents wh_recv_refresh As Button
+    Friend WithEvents wh_product_refresh As Button
+    Friend WithEvents stock_tab As TabPage
+    Friend WithEvents wh_stock_gd As DataGridView
+    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents wh_stock_btnshow As Button
+    Friend WithEvents wh_stock_tb_name As TextBox
+    Friend WithEvents wh_stock_checkl As CheckBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents GroupBox6 As GroupBox
+    Friend WithEvents wh_suppl_delete As Button
+    Friend WithEvents wh_suppl_modify As CheckBox
+    Friend WithEvents wh_suppl_update As Button
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents wh_product_update As Button
+    Friend WithEvents wh_product_delete As Button
+    Friend WithEvents wh_product_checkl As CheckBox
 End Class

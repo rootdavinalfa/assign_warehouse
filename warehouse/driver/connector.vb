@@ -1,4 +1,9 @@
-﻿Imports MySql.Data.MySqlClient
+﻿'Copyright 2019
+'    Davin Alfarizky Putra Basudewa <davinbambang@hotmail.com / dbasudewa@gmail.com>
+'    All rights reserved
+'This is my hardwork,please to insert credit to the github link if you copycat to your works
+'DONTSTEALMYHARDWORK
+Imports MySql.Data.MySqlClient
 Module connector
     Public cmd As MySqlCommand
     Public Con As MySqlConnection
