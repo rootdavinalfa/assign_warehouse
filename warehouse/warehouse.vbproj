@@ -103,6 +103,7 @@
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="driver\connector.vb" />
+    <Compile Include="driver\sql_command.vb" />
     <Compile Include="form\login_form.vb">
       <SubType>Form</SubType>
     </Compile>
