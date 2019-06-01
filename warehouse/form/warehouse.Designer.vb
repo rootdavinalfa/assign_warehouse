@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class warehouse
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class warehouse
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -68,6 +68,10 @@ Partial Class warehouse
         Me.production_tab = New System.Windows.Forms.TabPage()
         Me.wh_product_dgv = New System.Windows.Forms.DataGridView()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.wh_product_update = New System.Windows.Forms.Button()
+        Me.wh_product_delete = New System.Windows.Forms.Button()
+        Me.wh_product_checkl = New System.Windows.Forms.CheckBox()
         Me.wh_product_refresh = New System.Windows.Forms.Button()
         Me.wh_product_pic = New System.Windows.Forms.TextBox()
         Me.wh_product_upload = New System.Windows.Forms.Button()
@@ -78,10 +82,8 @@ Partial Class warehouse
         Me.wh_product_pack = New System.Windows.Forms.TextBox()
         Me.lbl_date = New System.Windows.Forms.Label()
         Me.now_date = New System.Windows.Forms.Timer(Me.components)
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.wh_product_update = New System.Windows.Forms.Button()
-        Me.wh_product_delete = New System.Windows.Forms.Button()
-        Me.wh_product_checkl = New System.Windows.Forms.CheckBox()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.wh_tablay.SuspendLayout()
         Me.summary_tab.SuspendLayout()
         CType(Me.wh_summary_dg, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -250,6 +252,7 @@ Partial Class warehouse
         '
         Me.stock_tab.Controls.Add(Me.GroupBox5)
         Me.stock_tab.Controls.Add(Me.wh_stock_gd)
+        Me.stock_tab.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.stock_tab.Location = New System.Drawing.Point(4, 22)
         Me.stock_tab.Name = "stock_tab"
         Me.stock_tab.Padding = New System.Windows.Forms.Padding(3)
@@ -262,6 +265,7 @@ Partial Class warehouse
         '
         Me.GroupBox5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox5.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox5.Controls.Add(Me.wh_stock_btnshow)
         Me.GroupBox5.Controls.Add(Me.wh_stock_tb_name)
         Me.GroupBox5.Controls.Add(Me.wh_stock_checkl)
@@ -277,9 +281,9 @@ Partial Class warehouse
         '
         Me.wh_stock_btnshow.Location = New System.Drawing.Point(486, 31)
         Me.wh_stock_btnshow.Name = "wh_stock_btnshow"
-        Me.wh_stock_btnshow.Size = New System.Drawing.Size(75, 23)
+        Me.wh_stock_btnshow.Size = New System.Drawing.Size(109, 23)
         Me.wh_stock_btnshow.TabIndex = 3
-        Me.wh_stock_btnshow.Text = "Show"
+        Me.wh_stock_btnshow.Text = "Show All / Refresh"
         Me.wh_stock_btnshow.UseVisualStyleBackColor = True
         '
         'wh_stock_tb_name
@@ -326,7 +330,7 @@ Partial Class warehouse
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
@@ -342,6 +346,7 @@ Partial Class warehouse
         Me.receive_tab.Controls.Add(Me.wh_recv_dgv)
         Me.receive_tab.Controls.Add(Me.GroupBox2)
         Me.receive_tab.Cursor = System.Windows.Forms.Cursors.Default
+        Me.receive_tab.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.receive_tab.Location = New System.Drawing.Point(4, 22)
         Me.receive_tab.Name = "receive_tab"
         Me.receive_tab.Padding = New System.Windows.Forms.Padding(3)
@@ -367,13 +372,14 @@ Partial Class warehouse
         DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.wh_recv_dgv.DefaultCellStyle = DataGridViewCellStyle6
         Me.wh_recv_dgv.Location = New System.Drawing.Point(4, 89)
         Me.wh_recv_dgv.Name = "wh_recv_dgv"
+        Me.wh_recv_dgv.ReadOnly = True
         Me.wh_recv_dgv.Size = New System.Drawing.Size(941, 300)
         Me.wh_recv_dgv.TabIndex = 1
         '
@@ -516,6 +522,7 @@ Partial Class warehouse
         '
         Me.production_tab.Controls.Add(Me.wh_product_dgv)
         Me.production_tab.Controls.Add(Me.GroupBox3)
+        Me.production_tab.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.production_tab.Location = New System.Drawing.Point(4, 22)
         Me.production_tab.Name = "production_tab"
         Me.production_tab.Padding = New System.Windows.Forms.Padding(3)
@@ -542,13 +549,14 @@ Partial Class warehouse
         DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.wh_product_dgv.DefaultCellStyle = DataGridViewCellStyle8
         Me.wh_product_dgv.Location = New System.Drawing.Point(3, 88)
         Me.wh_product_dgv.Name = "wh_product_dgv"
+        Me.wh_product_dgv.ReadOnly = True
         Me.wh_product_dgv.Size = New System.Drawing.Size(949, 307)
         Me.wh_product_dgv.TabIndex = 2
         '
@@ -568,16 +576,63 @@ Partial Class warehouse
         Me.GroupBox3.Controls.Add(Me.wh_product_pack)
         Me.GroupBox3.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(942, 79)
+        Me.GroupBox3.Size = New System.Drawing.Size(942, 88)
         Me.GroupBox3.TabIndex = 1
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Add Goods"
         '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.Label9)
+        Me.GroupBox4.Controls.Add(Me.wh_product_update)
+        Me.GroupBox4.Controls.Add(Me.wh_product_delete)
+        Me.GroupBox4.Controls.Add(Me.wh_product_checkl)
+        Me.GroupBox4.Location = New System.Drawing.Point(535, 10)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(247, 69)
+        Me.GroupBox4.TabIndex = 12
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Delete / Update"
+        '
+        'wh_product_update
+        '
+        Me.wh_product_update.BackColor = System.Drawing.Color.SeaGreen
+        Me.wh_product_update.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.wh_product_update.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.wh_product_update.Location = New System.Drawing.Point(114, 37)
+        Me.wh_product_update.Name = "wh_product_update"
+        Me.wh_product_update.Size = New System.Drawing.Size(104, 23)
+        Me.wh_product_update.TabIndex = 2
+        Me.wh_product_update.Text = "Update"
+        Me.wh_product_update.UseVisualStyleBackColor = False
+        '
+        'wh_product_delete
+        '
+        Me.wh_product_delete.BackColor = System.Drawing.Color.Brown
+        Me.wh_product_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.wh_product_delete.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.wh_product_delete.Location = New System.Drawing.Point(114, 13)
+        Me.wh_product_delete.Name = "wh_product_delete"
+        Me.wh_product_delete.Size = New System.Drawing.Size(104, 23)
+        Me.wh_product_delete.TabIndex = 1
+        Me.wh_product_delete.Text = "Delete Selected"
+        Me.wh_product_delete.UseVisualStyleBackColor = False
+        '
+        'wh_product_checkl
+        '
+        Me.wh_product_checkl.AutoSize = True
+        Me.wh_product_checkl.Location = New System.Drawing.Point(6, 26)
+        Me.wh_product_checkl.Name = "wh_product_checkl"
+        Me.wh_product_checkl.Size = New System.Drawing.Size(93, 17)
+        Me.wh_product_checkl.TabIndex = 0
+        Me.wh_product_checkl.Text = "Modify Table?"
+        Me.wh_product_checkl.UseVisualStyleBackColor = True
+        '
         'wh_product_refresh
         '
-        Me.wh_product_refresh.Location = New System.Drawing.Point(768, 24)
+        Me.wh_product_refresh.Location = New System.Drawing.Point(788, 24)
         Me.wh_product_refresh.Name = "wh_product_refresh"
-        Me.wh_product_refresh.Size = New System.Drawing.Size(75, 40)
+        Me.wh_product_refresh.Size = New System.Drawing.Size(55, 40)
         Me.wh_product_refresh.TabIndex = 11
         Me.wh_product_refresh.Text = "Refresh"
         Me.wh_product_refresh.UseVisualStyleBackColor = True
@@ -655,57 +710,32 @@ Partial Class warehouse
         'now_date
         '
         '
-        'GroupBox4
+        'LinkLabel1
         '
-        Me.GroupBox4.Controls.Add(Me.wh_product_update)
-        Me.GroupBox4.Controls.Add(Me.wh_product_delete)
-        Me.GroupBox4.Controls.Add(Me.wh_product_checkl)
-        Me.GroupBox4.Location = New System.Drawing.Point(535, 10)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(247, 69)
-        Me.GroupBox4.TabIndex = 12
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Delete / Update"
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabel1.Location = New System.Drawing.Point(721, 13)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(43, 16)
+        Me.LinkLabel1.TabIndex = 6
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "About"
         '
-        'wh_product_update
+        'Label9
         '
-        Me.wh_product_update.BackColor = System.Drawing.Color.SeaGreen
-        Me.wh_product_update.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.wh_product_update.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.wh_product_update.Location = New System.Drawing.Point(114, 37)
-        Me.wh_product_update.Name = "wh_product_update"
-        Me.wh_product_update.Size = New System.Drawing.Size(104, 23)
-        Me.wh_product_update.TabIndex = 2
-        Me.wh_product_update.Text = "Update"
-        Me.wh_product_update.UseVisualStyleBackColor = False
-        '
-        'wh_product_delete
-        '
-        Me.wh_product_delete.BackColor = System.Drawing.Color.Brown
-        Me.wh_product_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.wh_product_delete.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.wh_product_delete.Location = New System.Drawing.Point(114, 13)
-        Me.wh_product_delete.Name = "wh_product_delete"
-        Me.wh_product_delete.Size = New System.Drawing.Size(104, 23)
-        Me.wh_product_delete.TabIndex = 1
-        Me.wh_product_delete.Text = "Delete Selected"
-        Me.wh_product_delete.UseVisualStyleBackColor = False
-        '
-        'wh_product_checkl
-        '
-        Me.wh_product_checkl.AutoSize = True
-        Me.wh_product_checkl.Location = New System.Drawing.Point(6, 26)
-        Me.wh_product_checkl.Name = "wh_product_checkl"
-        Me.wh_product_checkl.Size = New System.Drawing.Size(93, 17)
-        Me.wh_product_checkl.TabIndex = 0
-        Me.wh_product_checkl.Text = "Modify Table?"
-        Me.wh_product_checkl.UseVisualStyleBackColor = True
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(7, 46)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(77, 13)
+        Me.Label9.TabIndex = 3
+        Me.Label9.Text = "Update Values"
         '
         'warehouse
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(957, 490)
+        Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.lbl_date)
         Me.Controls.Add(Me.wh_tablay)
         Me.Controls.Add(Me.wh_name_lbl)
@@ -792,4 +822,6 @@ Partial Class warehouse
     Friend WithEvents wh_product_update As Button
     Friend WithEvents wh_product_delete As Button
     Friend WithEvents wh_product_checkl As CheckBox
+    Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents Label9 As Label
 End Class

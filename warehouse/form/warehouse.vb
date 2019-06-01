@@ -65,12 +65,12 @@ Public Class warehouse
             sql = "SELECT t1.wh_rh as 'ID',t2.name_package AS 'Package Name',t4.name_supplier as 'Supplier' , t3.name as 'Maintainer',t1.received As 'Values'
 FROM wh_receive_history t1 INNER JOIN package_list t2 ON t1.id_package = t2.id_package
 INNER JOIN user_detail t3 ON t1.id_maintain = t3.id_user INNER JOIN supplier t4 ON
-t1.id_supplier = t4.id_supplier"
+t1.id_supplier = t4.id_supplier ORDER BY t1.wh_rh DESC"
         ElseIf wh_summary_product.Checked Then
             sql = "SELECT t1.wh_ph as 'ID',t2.name_package as 'Name Package', t3.name as 'PIC',t4.name as 'Maintainer',t1.package_items as 'Values'
 FROM wh_production_history t1 INNER JOIN package_list t2 ON t1.id_package = t2.id_package
 INNER JOIN user_detail t3 ON t1.id_pic = t3.id_user
-INNER JOIN user_detail t4 ON t1.id_maintain = t3.id_user"
+INNER JOIN user_detail t4 ON t1.id_maintain = t4.id_user ORDER BY t1.wh_ph DESC"
         End If
         ds = select_sqlcommand_with_dataset(sql)
         If ds.Tables.Count > 0 Then
@@ -92,7 +92,7 @@ VALUE(?idpack,?idsuppl,?idmaintain,?recv)"
         param.Add("?idsuppl", suppli)
         param.Add("?idmaintain", id)
         param.Add("?recv", recv)
-        If insert_recv_upload(sql, param) Then
+        If noreturnsql(sql, param) Then
             Dim stok As Integer
             sql = "SELECT stock FROM package_list WHERE id_package='" & idpack & "';"
             Dim dataStock = select_sqlcommand_with_datatable(sql)
@@ -105,8 +105,9 @@ VALUE(?idpack,?idsuppl,?idmaintain,?recv)"
             {"?stokk", stok}
             }
             sql = "UPDATE package_list SET stock=?stokk WHERE id_package='" & idpack & "';"
-            If insert_recv_upload(sql, param2) Then
+            If noreturnsql(sql, param2) Then
                 MsgBox("Data Uploaded!")
+                getRecvSu()
 
             End If
 
@@ -133,7 +134,138 @@ FROM package_list;"
         End If
 
     End Sub
+
+    Private Sub product_upload()
+        Dim idmaintain As Integer = wh_iduser_lbl.Text
+        Dim idpic As Integer = wh_product_pic.Text
+        Dim idpack As Integer = wh_product_pack.Text
+        Dim recv As Integer = wh_product_items.Text
+        sql = "INSERT INTO wh_production_history(id_package,id_pic,id_maintain,package_items)
+VALUE(?idpack,?idpic,?idmaintain,?recv)"
+        Dim param As New Dictionary(Of String, Integer)
+        param.Add("?idpack", idpack)
+        param.Add("?idpic", idpic)
+        param.Add("?idmaintain", idmaintain)
+        param.Add("?recv", recv)
+        If noreturnsql(sql, param) Then
+            Dim stok As Integer
+            sql = "SELECT stock FROM package_list WHERE id_package='" & idpack & "';"
+            Dim dataStock = select_sqlcommand_with_datatable(sql)
+            If dataStock.Rows.Count > 0 Then
+                stok = dataStock.Rows(0).Item(0) - recv
+            Else
+                stok = 0
+            End If
+            Dim param2 As New Dictionary(Of String, Integer) From {
+            {"?stokk", stok}
+            }
+            sql = "UPDATE package_list SET stock=?stokk WHERE id_package='" & idpack & "';"
+            If noreturnsql(sql, param2) Then
+                MsgBox("Data Uploaded!")
+                getProdSu()
+            End If
+
+        Else
+            MsgBox("ERROR!")
+        End If
+    End Sub
+    Private Sub getRecvSu()
+        sql = "SELECT t1.wh_rh as 'ID',t2.name_package AS 'Package Name',t4.name_supplier as 'Supplier' , t3.name as 'Maintainer',t1.received As 'Values'
+FROM wh_receive_history t1 INNER JOIN package_list t2 ON t1.id_package = t2.id_package
+INNER JOIN user_detail t3 ON t1.id_maintain = t3.id_user INNER JOIN supplier t4 ON
+t1.id_supplier = t4.id_supplier ORDER BY t1.wh_rh DESC"
+        Dim ds = select_sqlcommand_with_dataset(sql)
+        If ds.Tables.Count > 0 Then
+            wh_recv_dgv.DataSource = ds.Tables(0)
+        End If
+
+    End Sub
+
+    Private Sub getProdSu()
+        sql = "SELECT t1.wh_ph as 'ID',t2.name_package as 'Name Package', t3.name as 'PIC',t4.name as 'Maintainer',t1.package_items as 'Values'
+FROM wh_production_history t1 INNER JOIN package_list t2 ON t1.id_package = t2.id_package
+INNER JOIN user_detail t3 ON t1.id_pic = t3.id_user
+INNER JOIN user_detail t4 ON t1.id_maintain = t4.id_user ORDER BY t1.wh_ph DESC"
+        Dim ds = select_sqlcommand_with_dataset(sql)
+        If ds.Tables.Count > 0 Then
+            wh_product_dgv.DataSource = ds.Tables(0)
+        End If
+
+    End Sub
+
+    Private Sub remProductHist()
+        Dim index = wh_product_dgv.CurrentRow.Index
+        Dim idhist = wh_product_dgv.Item(0, index).Value
+        Dim values = wh_product_dgv.Item(4, index).Value
+        Dim package = wh_product_dgv.Item(1, index).Value
+        Dim after_values As Integer = 0
+        sql = "SELECT stock FROM package_list WHERE LOWER(name_package) LIKE LOWER('%" & package & "%')"
+        Dim ds = select_sqlcommand_with_datatable(sql)
+        If ds.Rows.Count > 0 Then
+            after_values = ds.Rows(0).Item(0) - values
+            sql = "UPDATE package_list SET stock = ?stock WHERE LOWER(name_package) LIKE LOWER('%" & package & "%')"
+            Dim param As New Dictionary(Of String, Integer)
+            param.Add("?stock", after_values)
+            If noreturnsql(sql, param) Then
+                sql = "DELETE FROM wh_production_history WHERE wh_ph =?id;"
+                Dim param2 As New Dictionary(Of String, Integer)
+                param2.Add("?id", idhist)
+                If noreturnsql(sql, param2) Then
+                    MsgBox("DELETED SUCCESSFULLY")
+                    wh_product_checkl.Checked = False
+                    getProdSu()
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub updateProdHist()
+        Dim index = wh_product_dgv.CurrentRow.Index
+        Dim idhist = wh_product_dgv.Item(0, index).Value
+        Dim values = wh_product_dgv.Item(4, index).Value
+        Dim package = wh_product_dgv.Item(1, index).Value
+        Dim after_values As Integer = 0
+        sql = "SELECT stock FROM package_list WHERE LOWER(name_package) LIKE LOWER('%" & package & "%')"
+        Dim ds = select_sqlcommand_with_datatable(sql)
+        If ds.Rows.Count > 0 Then
+            'If values on history is greater than updated,then dbval - values = nowval
+            'otherwise, dbval + values = nowval
+            sql = "SELECT package_items FROM wh_production_history WHERE wh_ph ='" & idhist & "'"
+            Dim ds1 = select_sqlcommand_with_datatable(sql)
+            Dim stokvalues As Integer = ds.Rows(0).Item(0)
+            Dim dbvalues As Integer = 0
+            Dim tempval As Integer = 0
+            If ds1.Rows.Count > 0 Then
+                dbvalues = ds1.Rows(0).Item(0)
+            End If
+            If dbvalues > values Then
+                tempval = dbvalues - values
+                after_values = stokvalues - tempval
+            ElseIf dbvalues < values Then
+                tempval = values - dbvalues
+                after_values = stokvalues + tempval
+
+            End If
+
+            sql = "UPDATE package_list SET stock = ?stock WHERE LOWER(name_package) LIKE LOWER('%" & package & "%')"
+            Dim param As New Dictionary(Of String, Integer)
+            param.Add("?stock", after_values)
+            If noreturnsql(sql, param) Then
+                sql = "UPDATE wh_production_history SET package_items = ?items WHERE wh_ph =?id;"
+                Dim param2 As New Dictionary(Of String, Integer)
+                param2.Add("?items", values)
+                param2.Add("?id", idhist)
+                If noreturnsql(sql, param2) Then
+                    MsgBox("UPDATED SUCCESSFULLY")
+                    wh_product_checkl.Checked = False
+                    getProdSu()
+                End If
+            End If
+        End If
+    End Sub
     'end of sql section
+
+
 
     Private Sub Wh_recv_upload_Click(sender As Object, e As EventArgs) Handles wh_recv_upload.Click
         recv_upload()
@@ -143,7 +275,7 @@ FROM package_list;"
         If wh_stock_checkl.Checked Then
             wh_stock_btnshow.Text = "Find"
         Else
-            wh_stock_btnshow.Text = "Show All"
+            wh_stock_btnshow.Text = "Show All / Refresh"
         End If
 
     End Sub
@@ -152,7 +284,6 @@ FROM package_list;"
         If wh_stock_checkl.Checked Then
             getStockList("CHECKED")
         Else
-            wh_stock_btnshow.Text = "Show"
             getStockList("")
         End If
     End Sub
@@ -168,6 +299,56 @@ FROM package_list;"
         If wh_suppl_modify.Checked Then
         Else
             MsgBox("If You want to DELETE,please check the checkbox")
+        End If
+    End Sub
+
+    Private Sub Wh_product_upload_Click(sender As Object, e As EventArgs) Handles wh_product_upload.Click
+        Call product_upload()
+    End Sub
+
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        thisprog.Show()
+    End Sub
+
+    Private Sub Wh_recv_refresh_Click(sender As Object, e As EventArgs) Handles wh_recv_refresh.Click
+        Call getRecvSu()
+    End Sub
+
+    Private Sub Wh_product_refresh_Click(sender As Object, e As EventArgs) Handles wh_product_refresh.Click
+        getProdSu()
+    End Sub
+
+    Private Sub Wh_product_update_Click(sender As Object, e As EventArgs) Handles wh_product_update.Click
+        If wh_product_checkl.Checked Then
+            updateProdHist()
+        Else
+            MsgBox("Please check allow modify and select row do you want to remove and try again")
+        End If
+    End Sub
+
+    Private Sub Wh_product_delete_Click(sender As Object, e As EventArgs) Handles wh_product_delete.Click
+        If wh_product_checkl.Checked Then
+            remProductHist()
+        Else
+            MsgBox("Please check allow modify and select row do you want to remove and try again")
+        End If
+
+    End Sub
+
+    Private Sub Wh_product_checkl_CheckedChanged(sender As Object, e As EventArgs) Handles wh_product_checkl.CheckedChanged
+        If wh_product_checkl.Checked Then
+            wh_product_dgv.ReadOnly = False
+        Else
+            wh_product_dgv.ReadOnly = True
+        End If
+
+    End Sub
+
+    Private Sub Wh_suppl_modify_CheckedChanged(sender As Object, e As EventArgs) Handles wh_suppl_modify.CheckedChanged
+        If wh_suppl_modify.Checked Then
+            wh_recv_dgv.ReadOnly = False
+        Else
+            wh_recv_dgv.ReadOnly = True
         End If
     End Sub
 End Class

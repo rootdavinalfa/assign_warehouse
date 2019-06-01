@@ -111,6 +111,12 @@
       <DependentUpon>login_form.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="form\thisprog.Designer.vb">
+      <DependentUpon>thisprog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="form\thisprog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="form\warehouse.Designer.vb">
       <DependentUpon>warehouse.vb</DependentUpon>
     </Compile>
@@ -136,6 +142,9 @@
   <ItemGroup>
     <EmbeddedResource Include="form\login_form.resx">
       <DependentUpon>login_form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\thisprog.resx">
+      <DependentUpon>thisprog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\warehouse.resx">
       <DependentUpon>warehouse.vb</DependentUpon>

@@ -11,6 +11,7 @@ Public Class login_form
     Private Sub login_form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Check is connected to mysql server and has no problem
         If checkConnect() = True Then
+            Label3.Text = String.Format("Version {0}", My.Application.Info.Version.ToString)
             MessageBox.Show("Connected to server")
         Else
             Application.Exit()
