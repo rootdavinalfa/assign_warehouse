@@ -69,6 +69,7 @@ Partial Class warehouse
         Me.wh_product_dgv = New System.Windows.Forms.DataGridView()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.wh_product_update = New System.Windows.Forms.Button()
         Me.wh_product_delete = New System.Windows.Forms.Button()
         Me.wh_product_checkl = New System.Windows.Forms.CheckBox()
@@ -83,7 +84,6 @@ Partial Class warehouse
         Me.lbl_date = New System.Windows.Forms.Label()
         Me.now_date = New System.Windows.Forms.Timer(Me.components)
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.wh_tablay.SuspendLayout()
         Me.summary_tab.SuspendLayout()
         CType(Me.wh_summary_dg, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -163,7 +163,7 @@ Partial Class warehouse
         Me.summary_tab.BackColor = System.Drawing.Color.Transparent
         Me.summary_tab.Controls.Add(Me.wh_summary_dg)
         Me.summary_tab.Controls.Add(Me.GroupBox1)
-        Me.summary_tab.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.summary_tab.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.summary_tab.Location = New System.Drawing.Point(4, 22)
         Me.summary_tab.Name = "summary_tab"
         Me.summary_tab.Size = New System.Drawing.Size(948, 395)
@@ -337,6 +337,7 @@ Partial Class warehouse
         Me.wh_stock_gd.DefaultCellStyle = DataGridViewCellStyle4
         Me.wh_stock_gd.Location = New System.Drawing.Point(0, 86)
         Me.wh_stock_gd.Name = "wh_stock_gd"
+        Me.wh_stock_gd.ReadOnly = True
         Me.wh_stock_gd.Size = New System.Drawing.Size(948, 309)
         Me.wh_stock_gd.TabIndex = 0
         '
@@ -594,6 +595,15 @@ Partial Class warehouse
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Delete / Update"
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(7, 46)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(77, 13)
+        Me.Label9.TabIndex = 3
+        Me.Label9.Text = "Update Values"
+        '
         'wh_product_update
         '
         Me.wh_product_update.BackColor = System.Drawing.Color.SeaGreen
@@ -720,15 +730,6 @@ Partial Class warehouse
         Me.LinkLabel1.TabIndex = 6
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "About"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(7, 46)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(77, 13)
-        Me.Label9.TabIndex = 3
-        Me.Label9.Text = "Update Values"
         '
         'warehouse
         '
