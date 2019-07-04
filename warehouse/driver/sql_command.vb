@@ -36,16 +36,4 @@ Public Class sql_command
             Return False
         End Try
     End Function
-
-    Public Shared Function delete_dataFromTab(sql_command As String) As Boolean
-        Call connect2db()
-        Try
-            Dim cmd As New MySqlCommand(sql_command, Con)
-            cmd.BeginExecuteNonQuery()
-            Return True
-        Catch ex As Exception
-            MsgBox("There's error while executing\nerror:" & ex.Message)
-            Return False
-        End Try
-    End Function
 End Class

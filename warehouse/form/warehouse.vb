@@ -424,4 +424,44 @@ INNER JOIN user_detail t4 ON t1.id_maintain = t4.id_user ORDER BY t1.wh_ph DESC"
             wh_recv_dgv.ReadOnly = True
         End If
     End Sub
+
+    Private Sub recv_id_enter(sender As Object, e As KeyPressEventArgs) Handles hw_recv_id.KeyPress
+        Dim tmp As System.Windows.Forms.KeyPressEventArgs = e
+        If tmp.KeyChar = ChrW(Keys.Enter) Then
+            sql = "SELECT name_package FROM package_list WHERE id_package=" & hw_recv_id.Text & ";"
+            Dim dt = select_sqlcommand_with_datatable(sql)
+            If dt.Rows.Count > 0 Then
+                Dim txt As String = dt.Rows(0).Item(0)
+                If MessageBox.Show("Are you sure this package : " & txt & " To be selected?", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                    'login_form.Show()
+                Else
+                    hw_recv_id.Text = ""
+                    'e.Cancel = True
+                End If
+            Else
+                MsgBox("id: " & hw_recv_id.Text & " Not found!")
+
+            End If
+        End If
+    End Sub
+
+    Private Sub hw_prod_key(sender As Object, e As KeyPressEventArgs) Handles wh_product_pack.KeyPress
+        Dim tmp As System.Windows.Forms.KeyPressEventArgs = e
+        If tmp.KeyChar = ChrW(Keys.Enter) Then
+            sql = "SELECT name_package FROM package_list WHERE id_package=" & wh_product_pack.Text & ";"
+            Dim dt = select_sqlcommand_with_datatable(sql)
+            If dt.Rows.Count > 0 Then
+                Dim txt As String = dt.Rows(0).Item(0)
+                If MessageBox.Show("Are you sure this package : " & txt & " To be selected?", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                    'login_form.Show()
+                Else
+                    wh_product_pack.Text = ""
+                    'e.Cancel = True
+                End If
+            Else
+                MsgBox("id: " & wh_product_pack.Text & " Not found!")
+
+            End If
+        End If
+    End Sub
 End Class

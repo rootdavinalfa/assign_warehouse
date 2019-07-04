@@ -61,4 +61,11 @@ Public Class login_form
         End If
         'adapter = New MySqlDataAdapter("SELECT")
     End Sub
+
+    Private Sub password_enter(sender As Object, e As KeyPressEventArgs) Handles password_text.KeyPress
+        Dim tmp As System.Windows.Forms.KeyPressEventArgs = e
+        If tmp.KeyChar = ChrW(Keys.Enter) Then
+            Call Login()
+        End If
+    End Sub
 End Class
