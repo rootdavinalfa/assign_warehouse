@@ -89,6 +89,8 @@ Partial Class warehouse
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.blink = New System.Windows.Forms.Timer(Me.components)
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.wh_tablay.SuspendLayout()
         Me.summary_tab.SuspendLayout()
         CType(Me.wh_summary_dg, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -275,6 +277,7 @@ Partial Class warehouse
         Me.GroupBox5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox5.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox5.Controls.Add(Me.Label14)
         Me.GroupBox5.Controls.Add(Me.wh_stock_btnshow)
         Me.GroupBox5.Controls.Add(Me.wh_stock_tb_name)
         Me.GroupBox5.Controls.Add(Me.wh_stock_checkl)
@@ -784,13 +787,27 @@ Partial Class warehouse
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label13.Location = New System.Drawing.Point(606, 38)
+        Me.Label13.Location = New System.Drawing.Point(489, 38)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(339, 20)
+        Me.Label13.Size = New System.Drawing.Size(456, 25)
         Me.Label13.TabIndex = 7
         Me.Label13.Text = "Just For Incoming,not Finish Good Warehouse"
+        '
+        'blink
+        '
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Label14.Location = New System.Drawing.Point(676, 28)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(260, 24)
+        Me.Label14.TabIndex = 8
+        Me.Label14.Text = "CLick on one cell to see detail"
         '
         'warehouse
         '
@@ -897,4 +914,6 @@ Partial Class warehouse
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents Label12 As Label
     Friend WithEvents Label13 As Label
+    Friend WithEvents blink As Timer
+    Friend WithEvents Label14 As Label
 End Class

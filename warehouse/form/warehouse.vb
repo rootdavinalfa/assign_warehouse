@@ -15,12 +15,15 @@ Public Class warehouse
     Private Sub warehouse_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         wh_summary_suppl.Checked = True
         now_date.Enabled = True
+        blink.Enabled = True
         wh_iduser_lbl.Text = login_form.iduser
         wh_name_lbl.Text = ""
         Call getname()
         Call getSupplierList()
         Call getSummary()
         Call getStockList("")
+        clean_in_wh()
+        clean_out_wh()
 
     End Sub
 
@@ -108,6 +111,7 @@ VALUE(?idpack,?idsuppl,?idmaintain,?recv)"
             If noreturnsql(sql, param2) Then
                 MsgBox("Data Uploaded!")
                 getRecvSu()
+                clean_in_wh()
 
             End If
 
@@ -163,6 +167,7 @@ VALUE(?idpack,?idpic,?idmaintain,?recv)"
             If noreturnsql(sql, param2) Then
                 MsgBox("Data Uploaded!")
                 getProdSu()
+                clean_out_wh()
             End If
 
         Else
@@ -339,7 +344,19 @@ INNER JOIN user_detail t4 ON t1.id_maintain = t4.id_user ORDER BY t1.wh_ph DESC"
 
 
     Private Sub Wh_recv_upload_Click(sender As Object, e As EventArgs) Handles wh_recv_upload.Click
-        recv_upload()
+        If hw_recv_id.Text = "" And wh_combo_supplier.Text = "" And hw_textb_items.Text = "" Then
+            MsgBox("Please enter field!")
+        Else
+            If MessageBox.Show("Are you sure to insert?", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                recv_upload()
+            Else
+                '            clean_in_wh()
+                'e.Cancel = True
+            End If
+        End If
+
+
+
     End Sub
 
     Private Sub Wh_stock_checkl_CheckedChanged(sender As Object, e As EventArgs) Handles wh_stock_checkl.CheckedChanged
@@ -376,7 +393,19 @@ INNER JOIN user_detail t4 ON t1.id_maintain = t4.id_user ORDER BY t1.wh_ph DESC"
     End Sub
 
     Private Sub Wh_product_upload_Click(sender As Object, e As EventArgs) Handles wh_product_upload.Click
-        Call product_upload()
+        If wh_product_pack.Text = "" And wh_product_pic.Text = "" And wh_product_items.Text = "" Then
+            MsgBox("Please enter field!")
+        Else
+            If MessageBox.Show("Are you sure to upload?", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                Call product_upload()
+            Else
+                'clean_in_wh()
+                'e.Cancel = True
+            End If
+        End If
+
+
+
     End Sub
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
@@ -433,9 +462,10 @@ INNER JOIN user_detail t4 ON t1.id_maintain = t4.id_user ORDER BY t1.wh_ph DESC"
             If dt.Rows.Count > 0 Then
                 Dim txt As String = dt.Rows(0).Item(0)
                 If MessageBox.Show("Are you sure this package : " & txt & " To be selected?", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                    'login_form.Show()
+                    wh_combo_supplier.Enabled = True
+                    hw_textb_items.Enabled = True
                 Else
-                    hw_recv_id.Text = ""
+                    clean_in_wh()
                     'e.Cancel = True
                 End If
             Else
@@ -453,9 +483,10 @@ INNER JOIN user_detail t4 ON t1.id_maintain = t4.id_user ORDER BY t1.wh_ph DESC"
             If dt.Rows.Count > 0 Then
                 Dim txt As String = dt.Rows(0).Item(0)
                 If MessageBox.Show("Are you sure this package : " & txt & " To be selected?", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                    'login_form.Show()
+                    wh_product_pic.Enabled = True
+                    wh_product_items.Enabled = True
                 Else
-                    wh_product_pack.Text = ""
+                    clean_out_wh()
                     'e.Cancel = True
                 End If
             Else
@@ -463,5 +494,36 @@ INNER JOIN user_detail t4 ON t1.id_maintain = t4.id_user ORDER BY t1.wh_ph DESC"
 
             End If
         End If
+    End Sub
+    Private Sub clean_in_wh()
+        hw_recv_id.Text = ""
+        wh_combo_supplier.Enabled = False
+        hw_textb_items.Enabled = False
+        hw_recv_id.Select()
+    End Sub
+    Private Sub clean_out_wh()
+        wh_product_pack.Text = ""
+        wh_product_pic.Enabled = False
+        wh_product_items.Enabled = False
+        wh_product_pack.Select()
+
+    End Sub
+
+    Private Sub Wh_stock_gd_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles wh_stock_gd.CellContentClick
+        If e.RowIndex >= 0 Then
+            Dim rows As DataGridViewRow = wh_stock_gd.Rows(e.RowIndex)
+            Dim hs As New history
+            hs.setID(rows.Cells(0).Value.ToString)
+            hs.ShowDialog()
+            'MsgBox(rows.Cells(0).Value.ToString)
+        End If
+
+    End Sub
+
+    Private Sub Blink_Tick(sender As Object, e As EventArgs) Handles blink.Tick
+        Dim Rnd As New Random
+        Label13.ForeColor = Color.FromArgb(255, Rnd.Next(200), Rnd.Next(200), Rnd.Next(200))
+        Label14.ForeColor = Color.FromArgb(255, Rnd.Next(200), Rnd.Next(200), Rnd.Next(200))
+
     End Sub
 End Class
