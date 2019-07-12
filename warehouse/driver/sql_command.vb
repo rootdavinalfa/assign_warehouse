@@ -31,9 +31,10 @@ Public Class sql_command
             Next
             cmd.BeginExecuteNonQuery()
             Return True
-        Catch ex As Exception
+        Catch ex As MySqlException
             MsgBox("There's error while executing\nerror:" & ex.Message)
             Return False
         End Try
+        Return False
     End Function
 End Class

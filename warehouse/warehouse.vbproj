@@ -81,6 +81,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -104,6 +105,18 @@
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="driver\connector.vb" />
     <Compile Include="driver\sql_command.vb" />
+    <Compile Include="form\dashboard\dashboard_in.Designer.vb">
+      <DependentUpon>dashboard_in.vb</DependentUpon>
+    </Compile>
+    <Compile Include="form\dashboard\dashboard_in.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\dashboard\dashboard_main.Designer.vb">
+      <DependentUpon>dashboard_main.vb</DependentUpon>
+    </Compile>
+    <Compile Include="form\dashboard\dashboard_main.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="form\history.Designer.vb">
       <DependentUpon>history.vb</DependentUpon>
     </Compile>
@@ -152,6 +165,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="form\dashboard\dashboard_in.resx">
+      <DependentUpon>dashboard_in.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\dashboard\dashboard_main.resx">
+      <DependentUpon>dashboard_main.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\history.resx">
       <DependentUpon>history.vb</DependentUpon>
     </EmbeddedResource>

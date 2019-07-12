@@ -40,11 +40,13 @@ Partial Class warehouse
         Me.summary_tab = New System.Windows.Forms.TabPage()
         Me.wh_summary_dg = New System.Windows.Forms.DataGridView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.wh_summary_show = New System.Windows.Forms.Button()
         Me.wh_summary_product = New System.Windows.Forms.RadioButton()
         Me.wh_summary_suppl = New System.Windows.Forms.RadioButton()
         Me.stock_tab = New System.Windows.Forms.TabPage()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.wh_stock_btnshow = New System.Windows.Forms.Button()
         Me.wh_stock_tb_name = New System.Windows.Forms.TextBox()
         Me.wh_stock_checkl = New System.Windows.Forms.CheckBox()
@@ -81,16 +83,15 @@ Partial Class warehouse
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.wh_product_pack = New System.Windows.Forms.TextBox()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.lbl_date = New System.Windows.Forms.Label()
         Me.now_date = New System.Windows.Forms.Timer(Me.components)
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.blink = New System.Windows.Forms.Timer(Me.components)
-        Me.Label14 = New System.Windows.Forms.Label()
         Me.wh_tablay.SuspendLayout()
         Me.summary_tab.SuspendLayout()
         CType(Me.wh_summary_dg, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -215,6 +216,7 @@ Partial Class warehouse
         '
         Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.Label15)
         Me.GroupBox1.Controls.Add(Me.wh_summary_show)
         Me.GroupBox1.Controls.Add(Me.wh_summary_product)
         Me.GroupBox1.Controls.Add(Me.wh_summary_suppl)
@@ -225,6 +227,19 @@ Partial Class warehouse
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "View By"
+        '
+        'Label15
+        '
+        Me.Label15.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(409, 59)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(133, 24)
+        Me.Label15.TabIndex = 3
+        Me.Label15.Text = "10 Last Update"
         '
         'wh_summary_show
         '
@@ -288,6 +303,17 @@ Partial Class warehouse
         Me.GroupBox5.TabIndex = 1
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Stok/Package Find"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Label14.Location = New System.Drawing.Point(676, 28)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(254, 24)
+        Me.Label14.TabIndex = 8
+        Me.Label14.Text = "Click on one cell to see detail"
         '
         'wh_stock_btnshow
         '
@@ -718,6 +744,47 @@ Partial Class warehouse
         Me.wh_product_pack.Size = New System.Drawing.Size(285, 20)
         Me.wh_product_pack.TabIndex = 0
         '
+        'TabPage1
+        '
+        Me.TabPage1.Controls.Add(Me.Label11)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Size = New System.Drawing.Size(948, 395)
+        Me.TabPage1.TabIndex = 4
+        Me.TabPage1.Text = "Supplier"
+        Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(7, 9)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(336, 75)
+        Me.Label11.TabIndex = 0
+        Me.Label11.Text = "Don't be ridiculous!" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Supplier List wont be here" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Supplier was on Purchasing Dept" &
+    "!"
+        '
+        'TabPage2
+        '
+        Me.TabPage2.Controls.Add(Me.Label12)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Size = New System.Drawing.Size(948, 395)
+        Me.TabPage2.TabIndex = 5
+        Me.TabPage2.Text = "Package"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(8, 14)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(311, 50)
+        Me.Label12.TabIndex = 1
+        Me.Label12.Text = "Here Same As Before," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "package was under purchasing"
+        '
         'lbl_date
         '
         Me.lbl_date.AutoSize = True
@@ -743,47 +810,6 @@ Partial Class warehouse
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "About"
         '
-        'TabPage1
-        '
-        Me.TabPage1.Controls.Add(Me.Label11)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Size = New System.Drawing.Size(948, 395)
-        Me.TabPage1.TabIndex = 4
-        Me.TabPage1.Text = "Supplier"
-        Me.TabPage1.UseVisualStyleBackColor = True
-        '
-        'TabPage2
-        '
-        Me.TabPage2.Controls.Add(Me.Label12)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Size = New System.Drawing.Size(948, 395)
-        Me.TabPage2.TabIndex = 5
-        Me.TabPage2.Text = "Package"
-        Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(7, 9)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(336, 75)
-        Me.Label11.TabIndex = 0
-        Me.Label11.Text = "Don't be ridiculous!" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Supplier List wont be here" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Supplier was on Purchasing Dept" &
-    "!"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(8, 14)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(311, 50)
-        Me.Label12.TabIndex = 1
-        Me.Label12.Text = "Here Same As Before," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "package was under purchasing"
-        '
         'Label13
         '
         Me.Label13.AutoSize = True
@@ -797,17 +823,6 @@ Partial Class warehouse
         '
         'blink
         '
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label14.Location = New System.Drawing.Point(676, 28)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(260, 24)
-        Me.Label14.TabIndex = 8
-        Me.Label14.Text = "CLick on one cell to see detail"
         '
         'warehouse
         '
@@ -916,4 +931,5 @@ Partial Class warehouse
     Friend WithEvents Label13 As Label
     Friend WithEvents blink As Timer
     Friend WithEvents Label14 As Label
+    Friend WithEvents Label15 As Label
 End Class

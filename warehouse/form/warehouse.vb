@@ -2,9 +2,10 @@
 '    Davin Alfarizky Putra Basudewa <davinbambang@hotmail.com / dbasudewa@gmail.com>
 '    All rights reserved
 Imports warehouse.sql_command
+Imports MySql.Data.MySqlClient
 Public Class warehouse
     Private Sub warehouse_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If MessageBox.Show("Are you sure to close this form?", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+        If MessageBox.Show("Are you sure to close this form and logout?", "Caution!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
             login_form.Show()
         Else
             e.Cancel = True
@@ -13,6 +14,7 @@ Public Class warehouse
     End Sub
 
     Private Sub warehouse_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        wh_stock_tb_name.Enabled = False
         wh_summary_suppl.Checked = True
         now_date.Enabled = True
         blink.Enabled = True
@@ -68,12 +70,12 @@ Public Class warehouse
             sql = "SELECT t1.wh_rh as 'ID',t2.name_package AS 'Package Name',t4.name_supplier as 'Supplier' , t3.name as 'Maintainer',t1.received As 'Values'
 FROM wh_receive_history t1 INNER JOIN package_list t2 ON t1.id_package = t2.id_package
 INNER JOIN user_detail t3 ON t1.id_maintain = t3.id_user INNER JOIN supplier t4 ON
-t1.id_supplier = t4.id_supplier ORDER BY t1.wh_rh DESC"
+t1.id_supplier = t4.id_supplier ORDER BY t1.wh_rh DESC LIMIT 0,10"
         ElseIf wh_summary_product.Checked Then
             sql = "SELECT t1.wh_ph as 'ID',t2.name_package as 'Name Package', t3.name as 'PIC',t4.name as 'Maintainer',t1.package_items as 'Values'
 FROM wh_production_history t1 INNER JOIN package_list t2 ON t1.id_package = t2.id_package
 INNER JOIN user_detail t3 ON t1.id_pic = t3.id_user
-INNER JOIN user_detail t4 ON t1.id_maintain = t4.id_user ORDER BY t1.wh_ph DESC"
+INNER JOIN user_detail t4 ON t1.id_maintain = t4.id_user ORDER BY t1.wh_ph DESC LIMIT 0,10"
         End If
         ds = select_sqlcommand_with_dataset(sql)
         If ds.Tables.Count > 0 Then
@@ -86,16 +88,19 @@ INNER JOIN user_detail t4 ON t1.id_maintain = t4.id_user ORDER BY t1.wh_ph DESC"
         Dim id As Integer = wh_iduser_lbl.Text
         Dim idpack As Integer = hw_recv_id.Text
         Dim suppli As Integer = wh_combo_supplier.SelectedValue
-
+        Dim regDate As DateTime = DateTime.Now
+        Dim strDate As String = regDate.ToString("yyyy-MM-dd HH:mm:ss")
         Dim recv As Integer = hw_textb_items.Text
-        sql = "INSERT INTO wh_receive_history(id_package,id_supplier,id_maintain,received)
-VALUE(?idpack,?idsuppl,?idmaintain,?recv)"
-        Dim param As New Dictionary(Of String, Integer)
-        param.Add("?idpack", idpack)
-        param.Add("?idsuppl", suppli)
-        param.Add("?idmaintain", id)
-        param.Add("?recv", recv)
-        If noreturnsql(sql, param) Then
+        sql = "INSERT INTO wh_receive_history(id_package,id_supplier,id_maintain,received,date)
+VALUE(?idpack,?idsuppl,?idmaintain,?recv,?date)"
+        Try
+            Dim cmd As New MySqlCommand(sql, Con)
+            cmd.Parameters.AddWithValue("?idpack", idpack)
+            cmd.Parameters.AddWithValue("?idsuppl", suppli)
+            cmd.Parameters.AddWithValue("?idmaintain", id)
+            cmd.Parameters.AddWithValue("?recv", recv)
+            cmd.Parameters.AddWithValue("?date", strDate)
+            cmd.BeginExecuteNonQuery()
             Dim stok As Integer
             sql = "SELECT stock FROM package_list WHERE id_package='" & idpack & "';"
             Dim dataStock = select_sqlcommand_with_datatable(sql)
@@ -114,13 +119,39 @@ VALUE(?idpack,?idsuppl,?idmaintain,?recv)"
                 clean_in_wh()
 
             End If
-
-        Else
-            MsgBox("ERROR!")
-        End If
-
+        Catch ex As MySqlException
+            MsgBox("There's error while executing\nerror:" & ex.Message)
+        End Try
 
 
+        'Dim param As New Dictionary(Of String, Integer)
+        'param.Add("?idpack", idpack)
+        'param.Add("?idsuppl", suppli)
+        'param.Add("?idmaintain", id)
+        'param.Add("?recv", recv)
+        'If noreturnsql(sql, param) Then
+        '    Dim stok As Integer
+        '    sql = "SELECT stock FROM package_list WHERE id_package='" & idpack & "';"
+        '    Dim dataStock = select_sqlcommand_with_datatable(sql)
+        '    If dataStock.Rows.Count > 0 Then
+        '        stok = recv + dataStock.Rows(0).Item(0)
+        '    Else
+        '        stok = 0
+        '    End If
+        '    Dim param2 As New Dictionary(Of String, Integer) From {
+        '    {"?stokk", stok}
+        '    }
+        '    sql = "UPDATE package_list SET stock=?stokk WHERE id_package='" & idpack & "';"
+        '    If noreturnsql(sql, param2) Then
+        '        MsgBox("Data Uploaded!")
+        '        getRecvSu()
+        '        clean_in_wh()
+
+        '    End If
+
+        'Else
+        '    MsgBox("ERROR!")
+        'End If
     End Sub
     Private Sub getStockList(states As String)
         If states = "CHECKED" Then
@@ -140,18 +171,25 @@ FROM package_list;"
     End Sub
 
     Private Sub product_upload()
+        Dim regDate As DateTime = DateTime.Now
+        Dim strDate As String = regDate.ToString("yyyy-MM-dd HH:mm:ss")
         Dim idmaintain As Integer = wh_iduser_lbl.Text
         Dim idpic As Integer = wh_product_pic.Text
         Dim idpack As Integer = wh_product_pack.Text
         Dim recv As Integer = wh_product_items.Text
-        sql = "INSERT INTO wh_production_history(id_package,id_pic,id_maintain,package_items)
-VALUE(?idpack,?idpic,?idmaintain,?recv)"
-        Dim param As New Dictionary(Of String, Integer)
-        param.Add("?idpack", idpack)
-        param.Add("?idpic", idpic)
-        param.Add("?idmaintain", idmaintain)
-        param.Add("?recv", recv)
-        If noreturnsql(sql, param) Then
+        sql = "INSERT INTO wh_production_history(id_package,id_pic,id_maintain,package_items,datetime)
+VALUES(?idpack,?idpic,?idmaintain,?recv,?date)"
+        '        sql = "INSERT INTO wh_production_history(id_package,id_pic,id_maintain,package_items,datetime)
+        'VALUES(?idpack,?idpic,?idmaintain,?recv," & strDate & ")"
+        Call connect2db()
+        Try
+            Dim cmd As New MySqlCommand(sql, Con)
+            cmd.Parameters.AddWithValue("?idpack", idpack)
+            cmd.Parameters.AddWithValue("?idpic", idpic)
+            cmd.Parameters.AddWithValue("?idmaintain", idmaintain)
+            cmd.Parameters.AddWithValue("?recv", recv)
+            cmd.Parameters.AddWithValue("?date", strDate)
+            cmd.BeginExecuteNonQuery()
             Dim stok As Integer
             sql = "SELECT stock FROM package_list WHERE id_package='" & idpack & "';"
             Dim dataStock = select_sqlcommand_with_datatable(sql)
@@ -170,12 +208,12 @@ VALUE(?idpack,?idpic,?idmaintain,?recv)"
                 clean_out_wh()
             End If
 
-        Else
-            MsgBox("ERROR!")
-        End If
+        Catch ex As MySqlException
+            MsgBox("There's error while executing\nerror:" & ex.Message)
+        End Try
     End Sub
     Private Sub getRecvSu()
-        sql = "SELECT t1.wh_rh as 'ID',t2.name_package AS 'Package Name',t4.name_supplier as 'Supplier' , t3.name as 'Maintainer',t1.received As 'Values'
+        sql = "SELECT t1.wh_rh as 'ID',t2.name_package AS 'Package Name',t4.name_supplier as 'Supplier' , t3.name as 'Maintainer',t1.received As 'Values',t1.date As 'Received ON'
 FROM wh_receive_history t1 INNER JOIN package_list t2 ON t1.id_package = t2.id_package
 INNER JOIN user_detail t3 ON t1.id_maintain = t3.id_user INNER JOIN supplier t4 ON
 t1.id_supplier = t4.id_supplier ORDER BY t1.wh_rh DESC"
@@ -187,7 +225,7 @@ t1.id_supplier = t4.id_supplier ORDER BY t1.wh_rh DESC"
     End Sub
 
     Private Sub getProdSu()
-        sql = "SELECT t1.wh_ph as 'ID',t2.name_package as 'Name Package', t3.name as 'PIC',t4.name as 'Maintainer',t1.package_items as 'Values'
+        sql = "SELECT t1.wh_ph as 'ID',t2.name_package as 'Name Package', t3.name as 'PIC',t4.name as 'Maintainer',t1.package_items as 'Values',t1.datetime As 'Out On'
 FROM wh_production_history t1 INNER JOIN package_list t2 ON t1.id_package = t2.id_package
 INNER JOIN user_detail t3 ON t1.id_pic = t3.id_user
 INNER JOIN user_detail t4 ON t1.id_maintain = t4.id_user ORDER BY t1.wh_ph DESC"
@@ -362,7 +400,9 @@ INNER JOIN user_detail t4 ON t1.id_maintain = t4.id_user ORDER BY t1.wh_ph DESC"
     Private Sub Wh_stock_checkl_CheckedChanged(sender As Object, e As EventArgs) Handles wh_stock_checkl.CheckedChanged
         If wh_stock_checkl.Checked Then
             wh_stock_btnshow.Text = "Find"
+            wh_stock_tb_name.Enabled = True
         Else
+            wh_stock_tb_name.Enabled = False
             wh_stock_btnshow.Text = "Show All / Refresh"
         End If
 
@@ -503,6 +543,8 @@ INNER JOIN user_detail t4 ON t1.id_maintain = t4.id_user ORDER BY t1.wh_ph DESC"
     End Sub
     Private Sub clean_out_wh()
         wh_product_pack.Text = ""
+        wh_product_pic.Text = ""
+        wh_product_items.Text = ""
         wh_product_pic.Enabled = False
         wh_product_items.Enabled = False
         wh_product_pack.Select()
@@ -525,5 +567,16 @@ INNER JOIN user_detail t4 ON t1.id_maintain = t4.id_user ORDER BY t1.wh_ph DESC"
         Label13.ForeColor = Color.FromArgb(255, Rnd.Next(200), Rnd.Next(200), Rnd.Next(200))
         Label14.ForeColor = Color.FromArgb(255, Rnd.Next(200), Rnd.Next(200), Rnd.Next(200))
 
+    End Sub
+
+    Private Sub finder_package(sender As Object, e As KeyPressEventArgs) Handles wh_stock_tb_name.KeyPress
+        Dim tmp As System.Windows.Forms.KeyPressEventArgs = e
+        If tmp.KeyChar = ChrW(Keys.Enter) Then
+            If wh_stock_checkl.Checked Then
+                getStockList("CHECKED")
+            Else
+                getStockList("")
+            End If
+        End If
     End Sub
 End Class

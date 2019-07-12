@@ -25,7 +25,7 @@ Module connector
             End If
 
         Catch ex As Exception
-            'MessageBox.Show(ex.Message)
+            MsgBox(ex.Message)
         End Try
     End Sub
     Function checkConnect() As Boolean
